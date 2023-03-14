@@ -22,7 +22,7 @@ export const Links = styled.ul`
   align-items: center;
 `;
 
-export const Link = styled.li`
+export const Link = styled.a`
   cursor: pointer;
   color: #000000;
   font-weight: 700;
