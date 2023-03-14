@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = "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";
+const apiKey = "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";
 
 export const api = axios.create({
   baseURL: "https://api.openai.com/v1",

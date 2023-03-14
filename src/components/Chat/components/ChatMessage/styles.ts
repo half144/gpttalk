@@ -25,7 +25,7 @@ export const Message = styled.div<MessageForm>`
 
 export const Date = styled.div`
   font-size: 10px;
-  color: #000000;
+  color: ${({ theme }) => theme.textSecondary};
   margin-top: 4px;
   text-align: right;
 `;

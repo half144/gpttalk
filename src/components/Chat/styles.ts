@@ -2,7 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 40%;
-  background-color: #eef6ff;
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+
+  @media (max-width: 800px) {
+    width: 100vw;
+    height: 85vh;
+  }
 `;
 
 export const Messages = styled.div`
@@ -15,5 +20,9 @@ export const Messages = styled.div`
 
   &::-webkit-scrollbar {
     width: 5px;
+  }
+
+  @media (max-width: 800px) {
+    height: 85vh;
   }
 `;

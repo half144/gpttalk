@@ -16,7 +16,7 @@ export const useGpt = () => {
   const [lastMessages, setLastMessages] = useState<Message[]>([]);
   const setIsThinking = useGptStore((state) => state.setIsThinking);
 
-  const sendPrompt = async (prompt: string) => {
+  const sendPromptWithHistory = async (prompt: string) => {
     try {
       setIsThinking(true);
       const promptMessage = getMessage(prompt, true);
@@ -28,13 +28,13 @@ export const useGpt = () => {
       const result = await GptServices.getResponse(promptTratedWithHistory);
 
       const pureText = getPureText(result.choices[0].text);
-      const responseMessage = getMessage(pureText, false);
-
       setConversationHistory((conversationHistory) => [
         ...conversationHistory,
         promptQuestion,
         `A: ${pureText}`,
       ]);
+
+      const responseMessage = getMessage(pureText, false);
       setLastMessages((lastMessages) => [...lastMessages, responseMessage]);
 
       return pureText;
@@ -52,7 +52,7 @@ export const useGpt = () => {
 
   return {
     lastMessages,
-    sendPrompt,
+    sendPromptWithHistory,
     clearConversationHistory,
   };
 };

@@ -46,11 +46,16 @@ export const useSpeechApi = () => {
     speechInstance.stop();
   };
 
+  const clearResult = () => {
+    setResult("");
+  };
+
   return {
     start,
     stop,
     result,
     isEnd,
     speechInstance,
+    clearResult,
   };
 };

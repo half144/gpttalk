@@ -18,7 +18,7 @@ const Chat = ({ messages }: ChatProps) => {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   }
-  // atualiza o scroll do chat sempre que houver uma nova mensagem
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
