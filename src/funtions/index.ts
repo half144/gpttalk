@@ -10,14 +10,13 @@ export const getPureText = (text: string): string => {
   return resultWithNoLineBreak.trim();
 };
 
-export const speak = (text: string) => {
+export const speak = (text: string, callback: () => void) => {
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 3;
+  utterance.rate = 2.5;
   useGptStore.setState({ isTalking: true });
   speechSynthesis.speak(utterance);
-
-  // when stop talking set isTalking to false
   utterance.onend = () => {
     useGptStore.setState({ isTalking: false });
+    callback();
   };
 };

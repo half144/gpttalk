@@ -23,13 +23,11 @@ const variants: Variants = {
   },
 };
 
-interface RobotProps {}
+interface RobotProps {
+  isTalking: boolean;
+}
 
-const Robot = ({}: RobotProps) => {
-  const isTalking = useGptStore((state) => state.isTalking);
-
-  console.log("isTalking", isTalking);
-
+const Robot = ({ isTalking }: RobotProps) => {
   return (
     <S.Robot
       animate={isTalking ? "start" : "stop"}

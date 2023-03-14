@@ -36,6 +36,7 @@ export const useGpt = () => {
         `A: ${pureText}`,
       ]);
       setLastMessages((lastMessages) => [...lastMessages, responseMessage]);
+
       return pureText;
     } catch (error) {
       console.log(error);

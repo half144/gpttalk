@@ -18,6 +18,7 @@ export const useSpeechApi = () => {
   const [result, setResult] = useState<string>("");
   const [isEnd, setIsEnd] = useState(false);
   const setIsStarted = useGptStore((state) => state.setIsStarted);
+  const isTalking = useGptStore((state) => state.isTalking);
 
   useEffect(() => {
     const speechRecognition = createSpeechRecognition();
@@ -27,6 +28,7 @@ export const useSpeechApi = () => {
     speechRecognition.onresult = (event: any) => {
       const resultEvent = event.results[event.resultIndex];
       const transcript = resultEvent[0].transcript;
+
       setResult(transcript);
     };
   }, []);
@@ -38,8 +40,8 @@ export const useSpeechApi = () => {
   };
 
   const stop = () => {
-    setIsStarted(false);
     setIsEnd(true);
+    setIsStarted(false);
     setResult("");
     speechInstance.stop();
   };
